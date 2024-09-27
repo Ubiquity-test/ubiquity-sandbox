@@ -1,9 +1,23 @@
-
 plugins:
   - skipBotEvents: true
     uses:
-    	# hello-world-plugin
-      - plugin: http://127.0.0.1:9090
-        runsOn: [ "issue_comment.created" ]
-        with:
-          response: world
+     - plugin: http://127.0.0.1:4000
+       type: github
+       with:
+         labels:
+           time:
+             - "Time: <1 Hour"
+             - "Time: <2 Hours"
+             - "Time: <4 Hours"
+             - "Time: <1 Day"
+             - "Time: <1 Week"
+           priority:
+             - "Priority: 1 (Normal)"
+             - "Priority: 2 (Medium)"
+             - "Priority: 3 (High)"
+             - "Priority: 4 (Urgent)"
+             - "Priority: 5 (Emergency)"
+         basePriceMultiplier: 1
+         publicAccessControl:
+           setLabel: true
+           fundExternalClosedIssue: false
